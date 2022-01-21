@@ -42,6 +42,7 @@ export const showLockScreen = () => {
 	form.onsubmit = checkPassword(true);
 	Object.assign(form.style, {
 		margin: "auto",
+		padding: "0 2rem",
 	});
 
 	const input = form.createEl("input");
@@ -50,12 +51,12 @@ export const showLockScreen = () => {
 	Object.assign(input.style, {
 		fontSize: "5rem",
 		height: "auto",
+		width: "100%",
 		textAlign: "center",
 		borderTop: "none",
 		borderRight: "none",
 		borderLeft: "none",
 		boxShadow: "none",
-		padding: "0 1rem",
 	} as CSSStyleDeclaration);
 
 	input.addEventListener("keydown", (e) => {
