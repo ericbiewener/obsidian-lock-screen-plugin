@@ -1,12 +1,17 @@
-type CleanUpFn = () => void;
+type HTMLElementName = keyof HTMLElementTagNameMap;
 
-const fns: CleanUpFn[] = [];
+const ids: string[] = [];
 
 export const cleanupService = {
-	registerFn: (fn: CleanUpFn) => {
-		fns.push(fn);
-	},
 	cleanUp: () => {
-		for (const fn of fns) fn();
+		for (const id of ids) {
+			document.getElementById(id)?.remove();
+		}
+	},
+	createEl: (parentEl: HTMLElement, elType: HTMLElementName, id: string) => {
+		const el = parentEl.createEl(elType);
+		el.id = id;
+		ids.push(id);
+		return el;
 	},
 };

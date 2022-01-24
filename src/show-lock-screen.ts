@@ -1,5 +1,5 @@
 import { getSettings } from "./settings";
-import { cleanupService } from "./clean-up"
+import { cleanupService } from "./clean-up";
 
 let isVisible = false;
 
@@ -9,8 +9,11 @@ export const showLockScreen = () => {
 
 	const settings = getSettings();
 
-	const container = document.body.createEl("div");
-	cleanupService.registerFn(() => container.remove())
+	const container = cleanupService.createEl(
+		document.body,
+		"div",
+		"edb--lock-screen--container"
+	);
 
 	Object.assign(container.style, {
 		background: "var(--background-secondary)",
