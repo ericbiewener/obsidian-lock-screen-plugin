@@ -7,7 +7,6 @@ export const cleanupService = {
 		fns.push(fn);
 	},
 	cleanUp: () => {
-		console.log('cleaning up')
 		for (const fn of fns) fn();
 	},
 };
