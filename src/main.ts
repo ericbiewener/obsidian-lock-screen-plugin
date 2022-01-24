@@ -3,7 +3,7 @@ import { addShowLockScreenCommand } from "./show-lock-screen-command";
 import { initSettings, addSettingsTab } from "./settings";
 import { showLockScreenWhenBackgrounded } from "./show-lock-screen-on-window-blur";
 import { showLockScreen } from './show-lock-screen'
-import { cleanupService } from './clean-up'
+import { domService } from './dom-service'
 
 export default class MyPlugin extends o.Plugin {
 	async onload() {
@@ -15,6 +15,6 @@ export default class MyPlugin extends o.Plugin {
 	}
 
 	async onunload() {
-		cleanupService.cleanUp()
+		domService.cleanUp()
 	}
 }

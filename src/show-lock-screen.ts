@@ -1,5 +1,5 @@
 import { getSettings } from "./settings";
-import { cleanupService } from "./clean-up";
+import { domService } from "./dom-service";
 
 let isVisible = false;
 
@@ -9,7 +9,7 @@ export const showLockScreen = () => {
 
 	const settings = getSettings();
 
-	const container = cleanupService.createEl(
+	const container = domService.createEl(
 		document.body,
 		"div",
 		"edb--lock-screen--container"

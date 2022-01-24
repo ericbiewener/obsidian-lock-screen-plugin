@@ -7,6 +7,6 @@ export const addShowLockScreenCommand = (
 	plugin.addCommand({
 		id: "lock-screen",
 		name: "Lock screen",
-		editorCallback: showLockScreen,
+		callback: showLockScreen,
 	});
 };
