@@ -1,5 +1,5 @@
-import { getSettings } from "./settings";
 import { domService } from "./dom-service";
+import { getSettings } from "./settings";
 
 let isVisible = false;
 

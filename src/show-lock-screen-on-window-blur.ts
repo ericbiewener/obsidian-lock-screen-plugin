@@ -1,6 +1,6 @@
 import * as o from "obsidian";
-import { showLockScreen } from "./show-lock-screen";
 import { getSettings } from "./settings";
+import { showLockScreen } from "./show-lock-screen";
 
 const showLockScreenAfterTimeout = () =>
 	setTimeout(showLockScreen, getSettings().timeout);
