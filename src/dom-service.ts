@@ -13,5 +13,6 @@ export const domService = {
 		for (const id of ids) {
 			document.getElementById(id)?.remove();
 		}
+		ids.length = 0;
 	},
 };
