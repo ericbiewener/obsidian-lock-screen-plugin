@@ -1,4 +1,5 @@
 import { getSettings } from "./settings";
+import { cleanupService } from "./clean-up"
 
 let isVisible = false;
 
@@ -9,6 +10,8 @@ export const showLockScreen = () => {
 	const settings = getSettings();
 
 	const container = document.body.createEl("div");
+	cleanupService.registerFn(() => container.remove())
+
 	Object.assign(container.style, {
 		background: "var(--background-secondary)",
 		position: "fixed",
