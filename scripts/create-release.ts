@@ -1,4 +1,5 @@
 import compareVersions from "compare-versions";
+import open from "open";
 import yargs from "yargs";
 import "zx/globals";
 
