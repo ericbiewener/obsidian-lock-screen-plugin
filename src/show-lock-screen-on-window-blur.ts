@@ -2,14 +2,12 @@ import * as o from "obsidian";
 import { getSettings } from "./settings";
 import { showLockScreen } from "./show-lock-screen";
 
-const showLockScreenAfterTimeout = () =>
-	setTimeout(showLockScreen, getSettings().timeout);
-
 const showLockScreenOnWindowBlur = (plugin: o.Plugin) => {
 	let timeout: NodeJS.Timeout;
+	const ms = getSettings().timeoutWindowBlur;
 
 	plugin.registerDomEvent(window, "blur", () => {
-		timeout = showLockScreenAfterTimeout();
+		timeout = setTimeout(showLockScreen, ms);
 	});
 
 	plugin.registerDomEvent(window, "focus", () => {
@@ -20,11 +18,12 @@ const showLockScreenOnWindowBlur = (plugin: o.Plugin) => {
 type HTMLElementEvent = Parameters<o.Plugin["registerDomEvent"]>[1];
 
 const showLockScreenWhenInteractionStops = (plugin: o.Plugin) => {
-	let timeout = showLockScreenAfterTimeout();
+	const ms = Math.max(getSettings().timeoutInteraction, 5000);
+	let timeout = setTimeout(showLockScreen, ms);
 
 	const resetTimeout = () => {
 		clearTimeout(timeout);
-		timeout = showLockScreenAfterTimeout();
+		timeout = setTimeout(showLockScreen, ms);
 	};
 
 	const documentEvents: HTMLElementEvent[] = [

@@ -1,14 +1,12 @@
 import * as o from "obsidian";
 
-export type Settings = {
-	password: string;
-	timeout: number;
+const settings = {
+	password: "",
+	timeoutWindowBlur: 30000,
+	timeoutInteraction: 30000,
 };
 
-const settings: Settings = {
-	password: "",
-	timeout: 30000,
-};
+export type Settings = typeof settings;
 
 let hasInitialized = false;
 
