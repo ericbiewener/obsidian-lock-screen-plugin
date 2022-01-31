@@ -6,7 +6,7 @@ export type Settings = {
 };
 
 const settings: Settings = {
-	password: "foobar",
+	password: "",
 	timeout: 30000,
 };
 
