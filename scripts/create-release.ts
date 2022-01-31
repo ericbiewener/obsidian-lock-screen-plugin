@@ -1,8 +1,6 @@
 import compareVersions from "compare-versions";
-import fs from "fs-extra";
-import path from "path";
 import yargs from "yargs";
-import { $ } from "zx";
+import "zx/globals";
 
 // @ts-ignore
 const { tag } = yargs.option("tag", {
@@ -42,7 +40,9 @@ const main = async () => {
 	await $`git add .`;
 	await $`git commit -m "bump version"`;
 	await $`git push`;
-	await $`gh release create ${tag} --draft=0 --prerelease=0 --title=${tag} --generate-notes`;
+	const releaseUrl =
+		await $`gh release create ${tag} --draft=0 --prerelease=0 --title=${tag} --generate-notes`;
+	open(releaseUrl.toString());
 };
 
 main();

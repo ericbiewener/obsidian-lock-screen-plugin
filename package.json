@@ -25,6 +25,7 @@
 		"husky": ">=6",
 		"lint-staged": ">=10",
 		"obsidian": "0.12.17",
+		"open": "8.4.0",
 		"prettier": "2.5.1",
 		"prettier-plugin-organize-imports": "2.3.4",
 		"ts-node": "10.4.0",
