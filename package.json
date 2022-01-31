@@ -7,7 +7,8 @@
 		"start": "node esbuild.config.mjs",
 		"build": "rm -rf dist && tsc -noEmit -skipLibCheck && NODE_ENV=production node esbuild.config.mjs",
 		"format": "prettier --write --no-error-on-unmatched-pattern **/*.{ts,js,json,md}, *.{ts,js,json,md}",
-		"prepare": "husky install"
+		"prepare": "husky install",
+		"release": "zx ./scripts/create-release.mjs"
 	},
 	"keywords": [],
 	"author": "Eric Biewener",
@@ -17,6 +18,7 @@
 		"@typescript-eslint/eslint-plugin": "5.2.0",
 		"@typescript-eslint/parser": "5.2.0",
 		"builtin-modules": "3.2.0",
+		"compare-versions": "4.1.3",
 		"esbuild": "0.13.12",
 		"fs-extra": "10.0.0",
 		"husky": ">=6",
@@ -25,7 +27,8 @@
 		"prettier": "2.5.1",
 		"prettier-plugin-organize-imports": "2.3.4",
 		"tslib": "2.3.1",
-		"typescript": "4.4.4"
+		"typescript": "4.4.4",
+		"yargs": "17.3.1"
 	},
 	"lint-staged": {
 		"*.{ts,js,json,md}": "prettier --write"
