@@ -8,13 +8,14 @@
 		"build": "rm -rf dist && tsc -noEmit -skipLibCheck && NODE_ENV=production node esbuild.config.mjs",
 		"format": "prettier --write --no-error-on-unmatched-pattern **/*.{ts,js,json,md}, *.{ts,js,json,md}",
 		"prepare": "husky install",
-		"release": "zx ./scripts/create-release.mjs"
+		"release": "ts-node --project=./tsconfig.scripts.json ./scripts/create-release.ts"
 	},
 	"keywords": [],
 	"author": "Eric Biewener",
 	"license": "MIT",
 	"devDependencies": {
 		"@types/node": "17.0.8",
+		"@types/yargs": "17.0.8",
 		"@typescript-eslint/eslint-plugin": "5.2.0",
 		"@typescript-eslint/parser": "5.2.0",
 		"builtin-modules": "3.2.0",
@@ -26,9 +27,11 @@
 		"obsidian": "0.12.17",
 		"prettier": "2.5.1",
 		"prettier-plugin-organize-imports": "2.3.4",
+		"ts-node": "10.4.0",
 		"tslib": "2.3.1",
 		"typescript": "4.4.4",
-		"yargs": "17.3.1"
+		"yargs": "17.3.1",
+		"zx": "4.3.0"
 	},
 	"lint-staged": {
 		"*.{ts,js,json,md}": "prettier --write"
