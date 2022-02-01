@@ -51,7 +51,7 @@ const main = async () => {
 	await $`git push`;
 	const releaseUrl =
 		await $`gh release create ${version} --draft=0 --prerelease=0 --title=${version} --generate-notes`;
-	open(releaseUrl.toString());
+	open(releaseUrl.toString().trim());
 };
 
 main();
