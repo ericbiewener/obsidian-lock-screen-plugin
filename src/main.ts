@@ -3,7 +3,7 @@ import { domService } from "./dom-service";
 import { addSettingsTab, initSettings } from "./settings";
 import { showLockScreen } from "./show-lock-screen";
 import { addShowLockScreenCommand } from "./show-lock-screen-command";
-import { showLockScreenWhenBackgrounded } from "./show-lock-screen-on-window-blur";
+import { showLockScreenWhenBackgrounded } from "./show-lock-screen-event-listeners";
 
 export default class MyPlugin extends o.Plugin {
 	async onload() {

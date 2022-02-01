@@ -79,7 +79,7 @@ const showPasswordField = (container: HTMLElement) => {
 	});
 
 	input.addEventListener("keyup", checkPassword(false));
-
+	input.addEventListener("blur", () => input.focus());
 	input.focus();
 };
 
