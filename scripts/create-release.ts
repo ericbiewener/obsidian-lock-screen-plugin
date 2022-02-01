@@ -18,18 +18,19 @@ const VERSIONS_FILENAME = path.join(ROOT, "versions.json");
 const getVersion = async () => {
 	const { releaseType } = await inquirer.prompt([
 		{
-			message: "Type of release",
+			message: "Type of release change",
 			name: "releaseType",
 			type: "list",
-			choices: ["major", "minor", "patch"],
+			choices: ["patch", "minor", "major"],
 		},
 	]);
 
-	console.info("releaseType", releaseType);
+	const version = await $`npm version ${releaseType}`;
+	return version.toString().slice(1).trim(); // remove leading "v", i.e. `v1.0.0` -> `1.0.0`
 };
 
-const writeManifest = () => {
-	manifest.version = tag;
+const writeManifest = (version: string) => {
+	manifest.version = version;
 	return fs.writeFile(
 		MANIFEST_FILENAME,
 		JSON.stringify(manifest, null, 2),
@@ -37,11 +38,11 @@ const writeManifest = () => {
 	);
 };
 
-const writeVersions = () => {
+const writeVersions = (version: string) => {
 	const versions = require(VERSIONS_FILENAME);
 	const appVersions: string[] = Object.values(versions);
 	appVersions.sort(compareVersions);
-	versions[tag] = appVersions[appVersions.length - 1];
+	versions[version] = appVersions[appVersions.length - 1];
 	return fs.writeFile(
 		VERSIONS_FILENAME,
 		JSON.stringify(versions, null, 2),
@@ -50,9 +51,8 @@ const writeVersions = () => {
 };
 
 const main = async () => {
-	await getVersion();
-	return;
-	await Promise.all([writeManifest(), writeVersions()]);
+	const version = await getVersion();
+	await Promise.all([writeManifest(version), writeVersions(version)]);
 	await $`git add .`;
 	await $`git commit -m "bump version"`;
 	await $`git push`;
