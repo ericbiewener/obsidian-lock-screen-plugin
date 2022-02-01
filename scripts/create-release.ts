@@ -1,15 +1,8 @@
 import compareVersions from "compare-versions";
 import inquirer from "inquirer";
 import open from "open";
-import yargs from "yargs";
 import "zx/globals";
 import manifest from "../manifest.json";
-
-// @ts-ignore
-const { tag } = yargs.option("tag", {
-	alias: "t",
-	describe: "new tag/version to create",
-}).argv;
 
 const ROOT = path.join(__dirname, "..");
 const MANIFEST_FILENAME = path.join(ROOT, "manifest.json");
@@ -57,7 +50,7 @@ const main = async () => {
 	await $`git commit -m "bump version"`;
 	await $`git push`;
 	const releaseUrl =
-		await $`gh release create ${tag} --draft=0 --prerelease=0 --title=${tag} --generate-notes`;
+		await $`gh release create ${version} --draft=0 --prerelease=0 --title=${version} --generate-notes`;
 	open(releaseUrl.toString());
 };
 
