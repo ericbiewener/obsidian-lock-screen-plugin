@@ -17,11 +17,6 @@ const MANIFEST = "manifest.json";
 
 const postBuild = async () => {
 	await fs.copyFile(path.join(MANIFEST), path.join(OUT_DIR, MANIFEST));
-	await fs.copy(
-		path.join(OUT_DIR),
-		"/Users/ericbiewener/Drive/π Archive/π Deep Freeze/Past Jobs/Data/.obsidian/plugins/lock-screen"
-	);
-	console.info("✅ Copied plugin to vault.");
 };
 
 esbuild
