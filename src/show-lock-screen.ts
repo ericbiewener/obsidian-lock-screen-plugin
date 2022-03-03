@@ -1,4 +1,6 @@
+import * as o from "obsidian";
 import { domService } from "./dom-service";
+import { globalState } from "./global-state";
 import { getSettings } from "./settings";
 
 let isVisible = false;
@@ -6,6 +8,9 @@ let isVisible = false;
 const hideLockScreen = (container: HTMLElement) => {
 	container.remove();
 	isVisible = false;
+	globalState.plugin.app.workspace
+		.getActiveViewOfType(o.MarkdownView)
+		?.editor.focus();
 };
 
 const showNoPasswordMsg = (container: HTMLElement) => {

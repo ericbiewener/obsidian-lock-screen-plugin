@@ -1,4 +1,5 @@
 import * as o from "obsidian";
+import { globalState } from "./global-state";
 import { getSettings } from "./settings";
 import { showLockScreen } from "./show-lock-screen";
 
@@ -43,7 +44,8 @@ const showLockScreenWhenInteractionStops = (plugin: o.Plugin) => {
 	}
 };
 
-export const showLockScreenWhenBackgrounded = (plugin: o.Plugin) => {
+export const showLockScreenWhenBackgrounded = () => {
+	const { plugin } = globalState;
 	if (o.Platform.isDesktopApp) {
 		showLockScreenOnWindowBlur(plugin);
 	} else {

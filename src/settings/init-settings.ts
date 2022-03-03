@@ -1,4 +1,4 @@
-import * as o from "obsidian";
+import { globalState } from "../global-state";
 
 const settings = {
 	password: "",
@@ -10,8 +10,8 @@ export type Settings = typeof settings;
 
 let hasInitialized = false;
 
-export const initSettings = async (plugin: o.Plugin) => {
-	Object.assign(settings, await plugin.loadData());
+export const initSettings = async () => {
+	Object.assign(settings, await globalState.plugin.loadData());
 	hasInitialized = true;
 	return settings;
 };
