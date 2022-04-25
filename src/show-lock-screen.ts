@@ -101,7 +101,7 @@ export const showLockScreen = () => {
 	);
 
 	Object.assign(container.style, {
-		background: "var(--background-secondary)",
+		background: "rgba(0, 0, 0, 1)",
 		position: "fixed",
 		top: "0",
 		bottom: "0",
