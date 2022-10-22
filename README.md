@@ -1,3 +1,7 @@
+## 🚨 NOT UNDER ACTIVE DEVELOPMENT 🚨
+
+Feel free to fork!
+
 # Obsidian Lock Screen Plugin
 
 Adds lock screen functionality to Obsidian. _This is a UI-only feature; no actual filesystem encryption is taking place._
