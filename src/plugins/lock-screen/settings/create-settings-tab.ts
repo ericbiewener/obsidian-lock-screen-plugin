@@ -1,21 +1,21 @@
-import * as o from 'obsidian';
+import o from "obsidian";
 
 export const createSettingsTab = (
 	plugin: o.Plugin,
-	display: (tab: o.PluginSettingTab) => void
+	display: (tab: o.PluginSettingTab) => void,
 ) => {
 	class SettingTab extends o.PluginSettingTab {
 		plugin: o.Plugin;
-		hasDisplayed = false
+		hasDisplayed = false;
 
 		constructor(plugin: o.Plugin) {
 			super(plugin.app, plugin);
 		}
 
 		display() {
-			if (this.hasDisplayed) return
+			if (this.hasDisplayed) return;
 			display(this);
-			this.hasDisplayed = true
+			this.hasDisplayed = true;
 		}
 	}
 

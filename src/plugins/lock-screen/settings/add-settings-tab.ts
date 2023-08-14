@@ -1,4 +1,4 @@
-import * as o from "obsidian";
+import o from "obsidian";
 import { globalState } from "../global-state";
 import { createSettingsTab } from "./create-settings-tab";
 import { getSettings } from "./init-settings";
@@ -22,14 +22,14 @@ export const addSettingsTab = () => {
 					text.setValue(settings.password).onChange(async (value) => {
 						settings.password = value;
 						await plugin.saveData(settings);
-					})
+					}),
 				);
 
 			if (o.Platform.isDesktopApp) {
 				new o.Setting(containerEl)
 					.setName("Delay before showing lock screen (Desktop)")
 					.setDesc(
-						"After the window loses focus, wait this many seconds before showing the lock screen."
+						"After the window loses focus, wait this many seconds before showing the lock screen.",
 					)
 					.addText((text) =>
 						text
@@ -38,27 +38,27 @@ export const addSettingsTab = () => {
 								const parsedVal = cleanNumericVal(text, value);
 								settings.timeoutWindowBlur = parsedVal * 1000;
 								await plugin.saveData(settings);
-							})
+							}),
 					);
 			} else {
 				const setting = new o.Setting(containerEl)
 					.setName("Delay before showing lock screen (Mobile)")
 					.setDesc(
-						"Show the lock screen after this many seconds without interaction."
+						"Show the lock screen after this many seconds without interaction.",
 					)
 					.addText((text) =>
 						text
 							.setValue(
-								String(settings.timeoutInteraction / 1000)
+								String(settings.timeoutInteraction / 1000),
 							)
 							.onChange(async (value) => {
 								const parsedVal = cleanNumericVal(text, value);
 								settings.timeoutInteraction = Math.max(
 									parsedVal * 1000,
-									5000
+									5000,
 								);
 								await plugin.saveData(settings);
-							})
+							}),
 					);
 
 				const msgEl = setting.descEl.createEl("span");
@@ -66,6 +66,6 @@ export const addSettingsTab = () => {
 				msgEl.innerText =
 					" Values lower than 5s can make the app unusable and will therefore default to 5s instead.";
 			}
-		})
+		}),
 	);
 };

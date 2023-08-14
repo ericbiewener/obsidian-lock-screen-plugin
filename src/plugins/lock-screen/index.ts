@@ -1,4 +1,4 @@
-import * as o from "obsidian";
+import o from "obsidian";
 import { domService } from "./dom-service";
 import { globalState } from "./global-state";
 import { addSettingsTab, initSettings } from "./settings";

@@ -1,4 +1,4 @@
-import * as o from "obsidian";
+import o from "obsidian";
 import { globalState } from "./global-state";
 import { getSettings } from "./settings";
 import { showLockScreen } from "./show-lock-screen";

@@ -1,4 +1,4 @@
-import * as o from "obsidian";
+import o from "obsidian";
 import { domService } from "./dom-service";
 import { globalState } from "./global-state";
 import { getSettings } from "./settings";
@@ -97,7 +97,7 @@ export const showLockScreen = () => {
 	const container = domService.createEl(
 		document.body,
 		"div",
-		"edb--lock-screen--container"
+		"edb--lock-screen--container",
 	);
 
 	Object.assign(container.style, {
